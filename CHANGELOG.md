@@ -1,5 +1,59 @@
 # Changelog
 
+## [3.8.1](https://github.com/fortify/fcli/compare/v3.8.0...v3.8.1) (2025-07-25)
+
+
+### Bug Fixes
+
+* Fix build issue that caused fcli release process to fail ([4d074d3](https://github.com/fortify/fcli/commit/4d074d3f0b74e991c113fe3ca8ab2019a03950c4))
+
+## [3.8.0](https://github.com/fortify/fcli/compare/v3.7.0...v3.8.0) (2025-07-25)
+
+
+### Features
+
+* `fcli aviator session login`: Validate connection and token ([0befdb7](https://github.com/fortify/fcli/commit/0befdb7caa0d9fc6c21f35431f711ce9d8965db1))
+* `fcli aviator ssc audit`: Generate remediations.xml with code fixes from aviator audit results ([0befdb7](https://github.com/fortify/fcli/commit/0befdb7caa0d9fc6c21f35431f711ce9d8965db1))
+* `fcli aviator`: SAST Aviator 25.3.0 release ([0befdb7](https://github.com/fortify/fcli/commit/0befdb7caa0d9fc6c21f35431f711ce9d8965db1))
+* `gitlab-sast-report` actions: Add trace nodes ([f2df2e4](https://github.com/fortify/fcli/commit/f2df2e470b6d80b2966ad3d74c8781c38999a154))
+* Action schema: Support `if:` instruction on individual `with:` elements ([f6f8175](https://github.com/fortify/fcli/commit/f6f8175b0b9139e003d14df7ce5be102b8c9854d))
+* Add `gitlab-codequality-report` actions for SSC and FOD (resolves [#733](https://github.com/fortify/fcli/issues/733)) ([8c9b87c](https://github.com/fortify/fcli/commit/8c9b87c7fd046b52f5ebef97c27b7b74c1c37ac5))
+* Add action schema documentation (see [#701](https://github.com/fortify/fcli/issues/701)) ([f1acba0](https://github.com/fortify/fcli/commit/f1acba0bf7cd2c56d0f73fc2ebac897c6f3a81d0))
+* FoD `setup-release` action: Add `--store` option to store FoD release data in fcli variable ([e325852](https://github.com/fortify/fcli/commit/e3258528b497bfbfd767027f3660a8a32a0e314f))
+* SSC `ci` action: Add support for running Aviator audit after scan completion (resolves [#750](https://github.com/fortify/fcli/issues/750)) ([5722a68](https://github.com/fortify/fcli/commit/5722a681ebc71004478a142c43595fa70a27da8b))
+* SSC `setup-appversion` action: Add `--store` option to store SSC application version data in fcli variable ([e325852](https://github.com/fortify/fcli/commit/e3258528b497bfbfd767027f3660a8a32a0e314f))
+
+
+### Bug Fixes
+
+* `fcli aviator ssc audit`: Improve handling of `PROTOCOL_ERROR` by adding retry for failed streams ([0befdb7](https://github.com/fortify/fcli/commit/0befdb7caa0d9fc6c21f35431f711ce9d8965db1))
+* `fcli aviator ssc audit`: Skip suppressed issues in Aviator audit ([0befdb7](https://github.com/fortify/fcli/commit/0befdb7caa0d9fc6c21f35431f711ce9d8965db1))
+* `fcli aviator token *`: `--email` option is now optional in aviator token commands ([0befdb7](https://github.com/fortify/fcli/commit/0befdb7caa0d9fc6c21f35431f711ce9d8965db1))
+* Action `run.fcli` instruction: Improve error handling ([5fedf4a](https://github.com/fortify/fcli/commit/5fedf4a4230c728f1a002a5a6bc6c9f05a2af609))
+* Commands that output `Action` column: Fix (renamed) `__action__` property being included in output even if not explicitly listed in `-o <fmt>=<properties>` (fixes [#774](https://github.com/fortify/fcli/issues/774)) ([8352608](https://github.com/fortify/fcli/commit/835260860da7fa98f1b44649ebf34745a5266f35))
+* Commands that output `Action` column: Fix `__action__` property improperly being renamed to `Action` for technical output formats like `json` or `yaml` (fixes [#774](https://github.com/fortify/fcli/issues/774)) ([8352608](https://github.com/fortify/fcli/commit/835260860da7fa98f1b44649ebf34745a5266f35))
+* Commands that output `Action` column: Fix `,__action__:Action` being appended to `expr` output (fixes [#774](https://github.com/fortify/fcli/issues/774)) ([8352608](https://github.com/fortify/fcli/commit/835260860da7fa98f1b44649ebf34745a5266f35))
+* SSC `setup-appversion` action: Add missing quotes to avoid exception if the name of the application version to create contains spaces ([9e0dbba](https://github.com/fortify/fcli/commit/9e0dbbac46b2dc31dbba9dfccb6d7c8c4ce0034c))
+* Throw proper exception on invalid character encoding (resolves [#772](https://github.com/fortify/fcli/issues/772)) ([3fb54bb](https://github.com/fortify/fcli/commit/3fb54bb21858b9761927d58048c07f7cbecf6003))
+
+## [3.7.0](https://github.com/fortify/fcli/compare/v3.6.0...v3.7.0) (2025-07-07)
+
+
+### Features
+
+* `fcli ssc session login`: Allow for disabling SC-SAST/SC-DAST connectivity (resolves [#740](https://github.com/fortify/fcli/issues/740)) ([b7aaae2](https://github.com/fortify/fcli/commit/b7aaae2e8676c2d900eb11a8052850b3f109b6ca))
+
+
+### Bug Fixes
+
+* `ci` action: Improve & complement usage help (fixes [#752](https://github.com/fortify/fcli/issues/752), closes [#762](https://github.com/fortify/fcli/issues/762)) ([22a5498](https://github.com/fortify/fcli/commit/22a549892a0ad61c297358d01165db6a95887be8))
+* `fcli aviator ssc audit`: Fix thread synchronization issues that randomly cause exceptions while auditing ([7819ec5](https://github.com/fortify/fcli/commit/7819ec5ec7427c74fa5c6f054a4918973a42ea26))
+* `gitlab-*-report` actions: Output empty string instead of `null` for `description` field ([da7f705](https://github.com/fortify/fcli/commit/da7f70526ce7350aded970c63185153807c3af2b))
+* `gitlab-dast-report` FoD action: Fix exception if site tree is unavailable ([6b24369](https://github.com/fortify/fcli/commit/6b2436991e124b720ddd4b62ad58c3fb943b8e7c))
+* Fix action progress messages not being cleared before final output (fixes [#766](https://github.com/fortify/fcli/issues/766)) ([4f03395](https://github.com/fortify/fcli/commit/4f033950d598575db5c7d8bd773baa5edfc4db50))
+* Fix incorrect synopsis in documentation for built-in actions (fixes [#765](https://github.com/fortify/fcli/issues/765)) (closes [#767](https://github.com/fortify/fcli/issues/767)) ([4f18948](https://github.com/fortify/fcli/commit/4f189483aa44eb32d7a8392dfaf833d86a4c4158))
+* SSC `check-policy` action: Fix --filterset option being ignored ([55e555d](https://github.com/fortify/fcli/commit/55e555dc96e0b22540a10c8f0c72b796e8484cac))
+
 ## [3.6.0](https://github.com/fortify/fcli/compare/v3.5.2...v3.6.0) (2025-06-14)
 
 
